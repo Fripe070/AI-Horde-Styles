@@ -1,11 +1,10 @@
 import json
-import logging
 import unittest
 from typing import Any, Annotated
 
 import requests
 from horde_sdk.ai_horde_api.apimodels import ImageGenerateAsyncRequest
-from pydantic import BaseModel, StringConstraints, field_validator, Field, model_validator, ValidationError, ConfigDict
+from pydantic import BaseModel, StringConstraints, field_validator, Field, model_validator, ConfigDict
 
 
 # noinspection PyNestedDecorators
@@ -83,5 +82,5 @@ class TestNewStyles(unittest.TestCase):
             with self.subTest(style=style.get("name", style)):
                 Style.model_validate(style, strict=True)
 
-        if len(self.styles) != len(set(style["name"] for style in self.styles)):
-            self.fail("Style names must be unique")
+        if len(self.styles) != len(set(style["name"].lower() for style in self.styles)):
+            self.fail("Style names must be unique, ignoring case")

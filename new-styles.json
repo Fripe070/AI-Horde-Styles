@@ -49,5 +49,21 @@
             "prompt": "{p}###{np}",
             "models": ["AlbedoBase XL (SDXL)", "stable_diffusion"]
         }
+    },
+    {
+        "name": "duplicate",
+        "tags": [],
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "AlbedoBase XL (SDXL)"]
+        }
+    },
+    {
+        "name": "Duplicate",
+        "tags": [],
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "AlbedoBase XL (SDXL)"]
+        }
     }
 ]
