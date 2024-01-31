@@ -7,7 +7,7 @@ class TestStyleCategories(unittest.TestCase):
     def setUp(self):
         with open("categories.json", "r", encoding="utf-8") as file:
             self.categories: dict[str, list[str]] = json.load(file)
-        with open("styles.json", "r", encoding="utf-8") as file:
+        with open("legacy-styles.json", "r", encoding="utf-8") as file:
             self.styles: dict[str, Any] = json.load(file)
 
     def test_style_exists(self) -> None:

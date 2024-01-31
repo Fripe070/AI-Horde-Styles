@@ -1,2 +1,3 @@
 horde_sdk
 requests
+pydantic

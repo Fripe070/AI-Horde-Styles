@@ -1,0 +1,53 @@
+[
+    {
+        "name": "test",
+        "tags": ["general"],
+        "apply_enhancements": true,
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "SDXL 1.0"]
+        }
+    },
+    {
+        "name": "Errors due to an invalid prompt",
+        "tags": [],
+        "apply_enhancements": true,
+        "request":{
+            "prompt": "{p}{np}",
+            "models": ["AlbedoBase XL (SDXL)", "SDXL 1.0"]
+        }
+    },
+    {
+        "name": "Errors due to an invalid tag",
+        "tags": ["invalid tag (invalid characters)"]
+    },
+    {
+        "name": "Errors due to fields missing"
+    },
+    {
+        "name": "Errors due to an unrecognised field",
+        "tags": [],
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "SDXL 1.0"]
+        },
+        "unrecognised_field": "test"
+    },
+    {
+        "name": "Doesn't error when using models with different baselines",
+        "tags": [],
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "stable_diffusion"]
+        }
+    },
+    {
+        "name": "Errors since the apply_enhancements field is set and models have different baselines",
+        "tags": [],
+        "apply_enhancements": true,
+        "request":{
+            "prompt": "{p}###{np}",
+            "models": ["AlbedoBase XL (SDXL)", "stable_diffusion"]
+        }
+    }
+]

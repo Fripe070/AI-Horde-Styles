@@ -25,7 +25,7 @@ def recursive_update(target: MutableMapping[str, Any], source: Mapping[str, Any]
 
 class TestStyles(unittest.TestCase):
     def setUp(self):
-        with open("styles.json", "r", encoding="utf-8") as file:
+        with open("legacy-styles.json", "r", encoding="utf-8") as file:
             self.styles: dict[str, dict[str, Any]] = json.load(file)
         with open("enhancements.json", "r", encoding="utf-8") as file:
             self.enhancements: dict[str, dict[str, Any]] = json.load(file)
