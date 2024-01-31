@@ -81,17 +81,7 @@ class TestNewStyles(unittest.TestCase):
 
         for style in self.styles:
             with self.subTest(style=style.get("name", style)):
-                try:
-                    Style.model_validate(style, strict=True)
-                except ValidationError as exception:
-                    # Make some pydantic validation errors a bit more clear for non-pydantic users
-                    for error in exception.errors():
-                        match error["type"]:
-                            case "extra_forbidden":
-                                self.fail(f"Found an unrecognized field: {error['loc'][0]}")
-                            case "assertion_error":
-                                raise error["ctx"]["error"]
-                    raise
+                Style.model_validate(style, strict=True)
 
         if len(self.styles) != len(set(style["name"] for style in self.styles)):
             self.fail("Style names must be unique")
