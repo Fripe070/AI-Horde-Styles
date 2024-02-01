@@ -8,7 +8,7 @@
                     "file": 1
                 },
                 {
-                    "regexp": " *Assertion failed, (.+)\\[type=assertion_error",
+                    "regexp": "validation errors? for .+?\n(.+) \\[type=",
                     "message": 1
                 }
             ]
