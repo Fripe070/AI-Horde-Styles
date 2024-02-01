@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -Ur requirements.txt
 
-      - run: echo "::add-matcher::styles.json"
+      - run: echo "::add-matcher::.github/styles.json"
       - name: Run style validation
         run: python -m unittest tests.test_new_styles
       - run: echo "::remove-matcher owner=styles::"
