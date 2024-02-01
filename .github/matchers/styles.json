@@ -9,7 +9,8 @@
                 },
                 {
                     "regexp": "validation errors? for .+?\n(.+) \\[type=",
-                    "message": 1
+                    "message": 1,
+                    "loop": true
                 }
             ]
         }
