@@ -1,10 +1,12 @@
 import json
+import os
 import unittest
+from pathlib import Path
 from typing import Any, Annotated
 
 import requests
 from horde_sdk.ai_horde_api.apimodels import ImageGenerateAsyncRequest
-from pydantic import BaseModel, StringConstraints, field_validator, Field, model_validator, ConfigDict
+from pydantic import BaseModel, StringConstraints, field_validator, Field, model_validator, ConfigDict, ValidationError
 
 
 # noinspection PyNestedDecorators
@@ -65,16 +67,22 @@ model_reference: dict[str, dict[str, Any]] = get_github_json_file(
     # "https://api.github.com/repos/Haidra-Org/AI-Horde-image-model-reference/contents/stable_diffusion.json"
     "https://github.com/Haidra-Org/AI-Horde-image-model-reference/raw/main/stable_diffusion.json"
 )
-with open("enhancements.json", "r", encoding="utf-8") as file:
+
+ENHANCEMENTS_PATH = Path("enhancements.json")
+STYLES_PATH = Path("new-styles.json")
+
+with open(ENHANCEMENTS_PATH, "r", encoding="utf-8") as file:
     enhancements: dict[str, dict[str, Any]] = json.load(file)
 
 
 class TestNewStyles(unittest.TestCase):
     def setUp(self):
-        with open("new-styles.json", "r", encoding="utf-8") as file:
+        with open(STYLES_PATH, "r", encoding="utf-8") as file:
             self.styles: list[dict[str, Any]] = json.load(file)
 
     def test_styles(self) -> None:
+        print(f"Validating {len(self.styles)} styles from {STYLES_PATH.as_posix()}")
+
         self.assertTrue(isinstance(self.styles, list))
         self.assertTrue(all(isinstance(style, dict) for style in self.styles))
 
