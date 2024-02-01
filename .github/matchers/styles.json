@@ -4,7 +4,7 @@
             "owner": "styles",
             "pattern": [
                 {
-                    "regexp": "Validating [0-9]+ 9 styles from (.+)\\.json",
+                    "regexp": "Validating [0-9]+ styles from (.+)\\.json",
                     "file": 1
                 },
                 {
